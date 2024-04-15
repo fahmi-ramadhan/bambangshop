@@ -63,12 +63,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
   - ✅ Commit: `Implement delete function in Subscriber repository.`
   - ✅ Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 - **STAGE 2: Implement services and controllers**
-  - [ ] Commit: `Create Notification service struct skeleton.`
-  - [ ] Commit: `Implement subscribe function in Notification service.`
-  - [ ] Commit: `Implement subscribe function in Notification controller.`
-  - [ ] Commit: `Implement unsubscribe function in Notification service.`
-  - [ ] Commit: `Implement unsubscribe function in Notification controller.`
-  - [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+  - ✅ Commit: `Create Notification service struct skeleton.`
+  - ✅ Commit: `Implement subscribe function in Notification service.`
+  - ✅ Commit: `Implement subscribe function in Notification controller.`
+  - ✅ Commit: `Implement unsubscribe function in Notification service.`
+  - ✅ Commit: `Implement unsubscribe function in Notification controller.`
+  - ✅ Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 - **STAGE 3: Implement notification mechanism**
   - [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
   - [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -91,5 +91,11 @@ This is the place for you to write reflections:
 3. Dalam konteks pemrograman dengan Rust, penggunaan `DashMap` dan _Singleton pattern_ bukanlah hal yang saling eksklusif. `DashMap` digunakan untuk menyediakan akses konkuren yang aman ke map yang penting dalam _multithreading_. Sementara itu, _Singleton pattern_ digunakan untuk memastikan bahwa hanya ada satu _instance_ dari suatuu objek dalam aplikasi. Dalam kasus `SUBSCRIBERS` pada proyek ini, kita sebenarnya sudah menerapkan _Singleton pattern_ dengan menggunakan `lazy_static!` untuk membuat _instance_ `DashMap` yang berisfat global dan statis. Jadi, kita memerlukan keduanya: `DashMap` untuk akses _thread-safe_ dan _Singleton pattern_ untuk memastikan hanya ada satu `DashMap` `SUBSCRIBERS` dalam aplikasi.
 
 #### Reflection Publisher-2
+
+1. Pemisahan "Service" dan "Repository adalah penerapan dari Single Responsibility Principle (SRP) dalam SOLID, yang menyatakan bahwa setiap modul atau kelas harus memiliki satu fungsionalitas khusus. Dengan memisahkan logika bisnis ke dalam "Service" dan akses data ke dalam "Repository", struktur kode kita menjadi lebih rapi dan mudah dihapami, serta memudahkan pengujian dan juga pemeliharaan.
+
+2. Jika kita hanya menggunakan Model tanpa memisahkan logika bisnis dan akses data ke dalam "Service" dan "Repository", kompleksitas kode akan meningkat secara signifikan. Setiap Model akan bertanggung jawab tidak hanya untuk merepresentasikan data, tetapi juga untuk logika bisnis dan operasi data. Ini akan membuat Model menjadi terlalu besar dan sulit untuk dipahami dan dikelola. Selain itu, perubahan kecil pada satu Model dapat berdampak pada Model lainnya karena ketergantungan yang tinggi antara mereka. Misalnya, perubahan pada `Product` dapat memengaruhi `Subscriber` dan `Notification`.
+
+3. Dalam tutorial ini, Postman membantu saya untuk menguji _endpoint-endpoint_ yang telah dibuat pada aplikasi ini. Saya dapat dengan mudah mengirim HTTP _request_ dengan menyesuaikan HTTP _method_-nya dan melihat _response_ yang diterima. Menurut saya, fitur untuk Postman untuk membuat koleksi _request_ yang terorganisir, menyimpan variabel, dan berbagi koleksi dengan rekan tim akan memudahkan kolaborasi dalam proyek kelompok saya.
 
 #### Reflection Publisher-3
