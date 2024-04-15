@@ -70,11 +70,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
   - ✅ Commit: `Implement unsubscribe function in Notification controller.`
   - ✅ Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 - **STAGE 3: Implement notification mechanism**
-  - [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
-  - [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
-  - [ ] Commit: `Implement publish function in Program service and Program controller.`
-  - [ ] Commit: `Edit Product service methods to call notify after create/delete.`
-  - [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+  - ✅ Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+  - ✅ Commit: `Implement notify function in Notification service to notify each Subscriber.`
+  - ✅ Commit: `Implement publish function in Program service and Program controller.`
+  - ✅ Commit: `Edit Product service methods to call notify after create/delete.`
+  - ✅ Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 
@@ -99,3 +99,9 @@ This is the place for you to write reflections:
 3. Dalam tutorial ini, Postman membantu saya untuk menguji _endpoint-endpoint_ yang telah dibuat pada aplikasi ini. Saya dapat dengan mudah mengirim HTTP _request_ dengan menyesuaikan HTTP _method_-nya dan melihat _response_ yang diterima. Menurut saya, fitur untuk Postman untuk membuat koleksi _request_ yang terorganisir, menyimpan variabel, dan berbagi koleksi dengan rekan tim akan memudahkan kolaborasi dalam proyek kelompok saya.
 
 #### Reflection Publisher-3
+
+1. Dalam tutorial ini, kita menggunakan variasi _Push model_ dari _Observer pattern_. Dalam model ini, _Publisher_ mem-_push_ data ke _Subscriber_ setiap kali ada perubahan. Pada kasus ini, ketika ada perubahan pada `Product` (misalnya produk baru ditambahkan), `ProductService` dalam `src/service/product.rs` akan memberi tahu semua `Subscriber` tentang perubahan terseut melalui `NotificationService` dalam `src/service/notification.rs`. Jadi, bukan _Subscriber_ yang meminta data dari _Publisher_, tetapi _Publisher_ yang aktif mem-_push_ data ke _Subscriber_.
+
+2. Jika menggunakan variasi _Pull model_ dari _Observer pattern_, keuntungannya ada pada efisiensi karena _Subscriber_ hanya akan meminta data dari _Publisher_ ketika mereka membutuhkannya, yang berarti tidak ada data yang dikirimkan yang mungkin tidak digunakan. Hal ini juga memberikan lebih banyak kontrol kepada _Subscriber_ atas kapan dan bagaimana mereka menerima data. Sementara itu, kerugiannya ada pada kompleksitas dan _overhead_ komunikasi yang lebih tinggi karena setiap _Subscriber_ harus secara aktif memeriksa perubahan dengan cukup sering.
+
+3. Jika kita memutuskan untuk tidak menggunakan _multi-threading_ dalam proses notifikasi, maka setiap notifikasi akan diproses secar berurutan. Atinya, ketika sebuah produk baru ditambahkan dan sistem perlu mengirim notifikasi ke semua _Subscriber_, sistem akan mengirim notifikasi satu per satu dan hal ini berpotensi membuat sistem menjadi lambat, terutama jika jumlah _Subscriber_ ada banyak sekali.
